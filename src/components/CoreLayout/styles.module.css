@@ -1,0 +1,21 @@
+.sider {
+  overflow: auto;
+  height: 100vh;
+  position: fixed;
+  inset-inline-start: 0;
+  top: 0;
+  bottom: 0;
+  scrollbar-width: thin;
+  scrollbar-color: unset;
+  width: var(--nav-bar-width) !important;
+  max-width: var(--nav-bar-width) !important;
+
+  & ul {
+    border: none !important;
+    font-weight: 500;
+  }
+}
+
+.layout_content {
+  margin-left: var(--nav-bar-width) !important;
+}

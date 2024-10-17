@@ -6,6 +6,6 @@ export default {
   },
   plugins: [],
   corePlugins: {
-    // preflight: false, //* fix CSS conflicts with antd
+    preflight: false, //* fix CSS conflicts with antd
   },
 };
