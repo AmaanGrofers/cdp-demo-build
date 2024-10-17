@@ -4,6 +4,7 @@ import styles from "./styles.module.css";
 import { appRoutes } from "../../constants/appRoutes";
 // import Logo from "../Assets/Logo.svg";
 import { useNavigate, useLocation } from "react-router-dom";
+import Header from "../Header";
 
 const { Sider } = Layout;
 
@@ -45,40 +46,31 @@ function CoreLayout({ children }) {
   }, []);
 
   return (
-    <Layout hasSider>
-      <Sider
-        className={`${styles.sider} bg-gray-50`}
-        style={{ "--nav-bar-width": NAV_BAR_WIDTH }}
-      >
-        {/* <img
-          style={{
-            alignSelf: "center",
-            objectFit: "contain",
-            marginTop: "10px",
-            marginBottom: "10px",
-            cursor: "pointer",
-          }}
-          onClick={() => {
-            navigate("/");
-          }}
-          src={Logo}
-          alt="logo"
-        /> */}
-        <Menu
-          mode="inline"
-          selectedKeys={[activeMenuKey]}
-          onClick={handleMenuClick}
-          items={items}
-          className="bg-gray-50"
-        />
-      </Sider>
-      <div
-        className={styles.layout_content}
-        style={{ "--nav-bar-width": NAV_BAR_WIDTH }}
-      >
-        {children}
-      </div>
-    </Layout>
+    <div>
+      <Header />
+
+      <Layout hasSider>
+        <Sider
+          // added top w.r.t. height of the header...
+          className={`${styles.sider} bg-white top-16 pt-2`}
+          style={{ "--nav-bar-width": NAV_BAR_WIDTH }}
+        >
+          <Menu
+            mode="inline"
+            selectedKeys={[activeMenuKey]}
+            onClick={handleMenuClick}
+            items={items}
+            className="bg-white-50"
+          />
+        </Sider>
+        <div
+          className={`${styles.layout_content} top-16`}
+          style={{ "--nav-bar-width": NAV_BAR_WIDTH }}
+        >
+          {children}
+        </div>
+      </Layout>
+    </div>
   );
 }
 export default CoreLayout;
