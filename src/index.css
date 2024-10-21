@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  margin: 0 !important;
+  margin: 0;
 }
 
 @font-face {
@@ -17,6 +17,7 @@ body {
   font-family: "Okra" !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* max-width: 1200px !important; */
 }
 
 @layer base {

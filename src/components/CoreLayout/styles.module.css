@@ -14,9 +14,14 @@
     border: none !important;
     font-weight: 500;
   }
+
+  & li {
+    margin-bottom: 0.25rem !important;
+  }
 }
 
 .layout_content {
   position: relative;
   left: var(--nav-bar-width) !important;
+  width: calc(100% - var(--nav-bar-width));
 }

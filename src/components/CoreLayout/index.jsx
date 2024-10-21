@@ -43,7 +43,8 @@ function CoreLayout({ children }) {
     if (selectedTab !== null && selectedTab !== undefined) {
       setActiveMenuKey(selectedTab.toString());
     }
-  }, []);
+    // as location is an object...
+  }, [JSON.stringify(location)]);
 
   return (
     <div>

@@ -9,6 +9,8 @@ const AdminRoutes = () => {
     <Routes>
       <Route path="/" element={<Navigate to={appRoutes.dataSources} />} />
       <Route path={appRoutes.dataSources} element={<DataSources />} />
+      <Route path="*" element={<Navigate to={appRoutes.dataSources} />} />
+
       <Route path={appRoutes.segments} element={<Segments />} />
       <Route path={appRoutes.destinations} element={<Destinations />} />
     </Routes>

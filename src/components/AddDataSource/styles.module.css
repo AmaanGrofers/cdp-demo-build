@@ -1,0 +1,5 @@
+.modal_body {
+  :global(.ant-modal-body) {
+    min-height: 200px;
+  }
+}
