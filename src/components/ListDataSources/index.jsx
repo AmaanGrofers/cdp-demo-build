@@ -78,8 +78,13 @@ function ListDataSources() {
 
   if (isEmpty(apiData)) {
     return (
-      <div className="mt-20">
-        <EmptyState title="No data source found" height={240} width={240} />
+      <div className="mt-10">
+        <EmptyState
+          title="No data source found"
+          height={240}
+          width={240}
+          flexDirection="column"
+        />
       </div>
     );
   }

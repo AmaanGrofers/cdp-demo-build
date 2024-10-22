@@ -5,15 +5,14 @@ import EmptyBox from "./empty-box.png";
 function EmptyState({
   height = 200,
   width = 200,
-  flexDirection = "col",
+  flexDirection = "column",
   title = "Data not found",
   titleSize = 5,
 }) {
-  const dirn = `flex-${flexDirection}`;
-
   return (
     <div
-      className={`flex ${dirn} items-center justify-center text-slate-100 tracking-wider`}
+      className={`flex items-center justify-center text-slate-100 tracking-wider`}
+      style={{ flexDirection: flexDirection }}
     >
       <div>
         <img
