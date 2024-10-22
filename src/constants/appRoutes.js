@@ -29,6 +29,11 @@ export const routeIcons = {
 };
 
 export const segmentRoutes = {
+  home: "/segments",
   createSegment: "/segments/create-segment",
   defineSegment: "/segments/define-segment",
+};
+
+export const userRoutes = {
+  login: "/login",
 };

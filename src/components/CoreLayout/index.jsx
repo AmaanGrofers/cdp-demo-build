@@ -20,7 +20,6 @@ const items = Object.keys(appRoutes).map((routeKey, index) => ({
 function CoreLayout({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log("location : ", location?.pathname?.split("/")?.[1]);
 
   const [activeMenuKey, setActiveMenuKey] = useState("");
 

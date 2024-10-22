@@ -1,6 +1,8 @@
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import CoreLayout from "./Components/CoreLayout";
 import AdminRoutes from "./Routes/AdminRoutes";
+import { userRoutes } from "./constants/appRoutes";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -15,8 +17,8 @@ function App() {
               </CoreLayout>
             }
           />
-          {/* <Route path={appRoutes.login} element={<Login />} />
-          <Route path="/" element={<Navigate to={appRoutes.login} />} />
+          <Route path={userRoutes.login} element={<Login />} />
+          {/* <Route path="/" element={<Navigate to={appRoutes.login} />} />
           <Route path="*" element={<Navigate to={appRoutes.login} />} /> */}
         </Routes>
       </BrowserRouter>

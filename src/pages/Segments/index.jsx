@@ -1,5 +1,6 @@
 import { Breadcrumb } from "antd";
 import { segmentRoutes } from "../../constants/appRoutes";
+import { HomeOutlined } from "@ant-design/icons";
 
 function Segments() {
   return (
@@ -9,6 +10,10 @@ function Segments() {
         <Breadcrumb
           separator=">"
           items={[
+            {
+              title: <HomeOutlined />,
+              href: `${segmentRoutes.home}`,
+            },
             {
               title: "Create Segment",
               href: `${segmentRoutes.createSegment}`,
