@@ -6,16 +6,13 @@ import isEmpty from "lodash.isempty";
 // eslint-disable-next-line react/prop-types
 function SourceControls({ isLoading = false, data = {} }) {
   if (isLoading) {
-    return (
-      <div>
-        <Skeleton />
-      </div>
-    );
+    return <Skeleton />;
   }
 
   if (isEmpty(data)) return;
 
-  const sourceControlKeys = data?.data?.result || [];
+  //* name is always required...
+  const sourceControlKeys = { ...(data?.data?.result || {}), name: true };
 
   const dataSourceControls = (getDataSourceControls() || []).filter(
     (controlItem) => sourceControlKeys[controlItem?.name]

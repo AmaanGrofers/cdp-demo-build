@@ -12,7 +12,9 @@ function EmptyState({
   const dirn = `flex-${flexDirection}`;
 
   return (
-    <div className={`flex ${dirn} items-center justify-center text-slate-100`}>
+    <div
+      className={`flex ${dirn} items-center justify-center text-slate-100 tracking-wider`}
+    >
       <div>
         <img
           src={EmptyBox}

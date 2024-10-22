@@ -1,64 +1,67 @@
 import { Button, Form, message, Modal } from "antd";
 import { postDatasources } from "../../apis/dataSources";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import CoreForm from "./CoreForm";
 import { useState } from "react";
 import styles from "./styles.module.css";
 
 // eslint-disable-next-line react/prop-types
-function AddDataSource({ open = false, setOpen = () => {} }) {
+function AddDataSource({ open = false, closeModal = () => {} }) {
   const [configType, setConfigType] = useState();
   const [form] = Form.useForm();
 
-  let dataSourceValues = {};
-  const {
-    isLoading: addingDataSource,
-    error,
-    isError,
-    refetch: addDataSource,
-  } = useQuery({
-    queryKey: ["datasources", dataSourceValues],
-    queryFn: ({ signal }) => postDatasources(signal, dataSourceValues),
-    enabled: false, // Disable automatic fetching
+  // Mutation for posting the data source
+  const { mutateAsync: addDataSource, isLoading } = useMutation({
+    mutationFn: postDatasources, // Function that makes the API request
+    onSuccess: () => {
+      message.success("Data source added successfully!");
+
+      // Reset the form and close the modal
+      form.resetFields();
+      closeModal();
+    },
+    onError: (error) => {
+      message.error(
+        `Failed to add data source: ${error?.message || "Unknown error"}`
+      );
+    },
   });
 
   const onCheck = async () => {
-    try {
-      const values = await form.validateFields();
-      console.log("form : ", form.getFieldsValue());
-      console.log("Success:", values);
+    const values = await form.validateFields();
+    console.log("values : ", values);
 
-      // dataSourceValues = {};
-      //!: hard coding for testing.......
-      dataSourceValues = {
-        tenant_id: 1,
-        name: "LocalTrino2",
-        config_map: {
-          host: "trino",
-          port: 8080,
-          catalog: "example_catalog",
-          schema: "example_schema",
-          username: "example_user",
-          password: "example_password",
-          ssl: false,
-        },
-        data_source_config_id: 1,
-      };
+    const { name, ...restValues } = values || {};
 
-      await addDataSource();
+    // const dataSourceValues = {
+    //   tenant_id: 1,
+    //   name,
+    //   data_source_config_id: configType, //todo: not the name, but it's linked value..,
+    //   config_map: restValues,
+    // };
 
-      if (isError) throw error;
+    //? hard coding for testing
+    const dataSourceValues = {
+      tenant_id: 1,
+      name: "LocalTrino2",
+      config_map: {
+        host: "trino",
+        port: 8080,
+        catalog: "example_catalog",
+        schema: "example_schema",
+        username: "example_user",
+        password: "example_password",
+        ssl: false,
+      },
+      data_source_config_id: 1,
+    };
 
-      message.success("Data source added successfully!");
+    await addDataSource(dataSourceValues);
+  };
 
-      form.resetFields(); //? reset form
-      setOpen(); //? close the form
-    } catch (errorInfo) {
-      if (isError)
-        message.error("Failed to add data source. Please try again.");
-
-      console.log("Failed:", errorInfo);
-    }
+  const handleCancel = () => {
+    // form.resetFields();
+    closeModal();
   };
 
   return (
@@ -66,13 +69,12 @@ function AddDataSource({ open = false, setOpen = () => {} }) {
       title="Add Data Source"
       centered
       open={open}
-      onOk={setOpen}
-      onCancel={setOpen}
+      onCancel={handleCancel}
       footer={[
         <Button
           key="submit"
           type="primary"
-          loading={addingDataSource}
+          loading={isLoading}
           onClick={onCheck}
         >
           Add

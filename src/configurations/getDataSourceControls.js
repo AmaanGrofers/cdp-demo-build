@@ -24,6 +24,20 @@ export function getDataSourceNameControl() {
 export function getDataSourceControls() {
   return [
     {
+      key: "name",
+      name: "name",
+      label: "Name",
+      type: "text",
+      rules: [
+        {
+          required: true,
+          message: "Required!",
+        },
+      ],
+      // placeholder: "Plea",
+      style: "",
+    },
+    {
       key: "catalog",
       name: "catalog",
       label: "Catalog",

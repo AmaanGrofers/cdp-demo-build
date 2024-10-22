@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "antd";
+import { Spin, Table } from "antd";
 import { listDatasources } from "../../apis/dataSources";
+import isEmpty from "lodash.isempty";
+import EmptyState from "../../common/EmptyState";
 
 const columns = [
   {
@@ -61,35 +63,47 @@ const data = [
 ];
 
 function ListDataSources() {
-  const {
-    data: apiData,
-    isLoading,
-    error,
-  } = useQuery({
+  const { data: apiData, isLoading } = useQuery({
     queryKey: ["listDataSources"],
     queryFn: ({ signal }) => listDatasources(signal),
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="w-full h-96 flex justify-center items-center">
+        <Spin size="large" />
+      </div>
+    );
+  }
 
-  return <div />;
-  // return (
-  //   <Table
-  //     columns={columns}
-  //     expandable={{
-  //       expandedRowRender: (record) => (
-  //         <p
-  //           style={{
-  //             margin: 0,
-  //           }}
-  //         >
-  //           {record.description}
-  //         </p>
-  //       ),
-  //       rowExpandable: (record) => record.name !== "Not Expandable",
-  //     }}
-  //     dataSource={data}
-  //   />
-  // );
+  if (isEmpty(apiData)) {
+    return (
+      <div className="mt-20">
+        <EmptyState title="No data source found" height={240} width={240} />
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-14">
+      <h4 className="mb-4">Connections :</h4>
+      <Table
+        columns={columns}
+        expandable={{
+          expandedRowRender: (record) => (
+            <p
+              style={{
+                margin: 0,
+              }}
+            >
+              {record.description}
+            </p>
+          ),
+          rowExpandable: (record) => record.name !== "Not Expandable",
+        }}
+        dataSource={data}
+      />
+    </div>
+  );
 }
 export default ListDataSources;

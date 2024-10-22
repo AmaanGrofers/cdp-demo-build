@@ -6,23 +6,21 @@ import ListDataSources from "../../components/ListDataSources";
 function DataSources() {
   const [open, setOpen] = useState(false);
 
-  const openModal = () => {
+  const changeModalVisibility = () => {
     setOpen((pv) => !pv);
   };
 
   return (
     <div className="p-4">
       <div className="flex justify-end">
-        <Button color="primary" variant="solid" onClick={openModal}>
+        <Button color="primary" variant="solid" onClick={changeModalVisibility}>
           Add Data Source
         </Button>
       </div>
 
-      <div className="mt-4">
-        <ListDataSources />
-      </div>
+      <ListDataSources />
 
-      <AddDataSource open={open} setOpen={openModal} />
+      <AddDataSource open={open} closeModal={changeModalVisibility} />
     </div>
   );
 }

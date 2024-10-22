@@ -14,10 +14,9 @@
 
 body {
   margin: 0;
-  font-family: "Okra" !important;
+  font-family: "Okra";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* max-width: 1200px !important; */
 }
 
 @layer base {
@@ -48,7 +47,7 @@ body {
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Okra", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .ant-layout {

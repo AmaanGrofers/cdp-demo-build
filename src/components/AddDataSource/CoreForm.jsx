@@ -6,7 +6,7 @@ import {
 } from "../../apis/dataSources";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { Select, Skeleton } from "antd";
+import { Select } from "antd";
 
 // eslint-disable-next-line react/prop-types
 function CoreForm({ form, configType, setConfigType }) {
@@ -28,8 +28,6 @@ function CoreForm({ form, configType, setConfigType }) {
     if (configType) refetch();
   }, [refetch, configType]);
 
-  if (configTypesLoading) return <Skeleton />;
-
   const configOptions = configTypesData?.data?.result?.map((item) => ({
     label: item,
     value: item,
@@ -43,20 +41,14 @@ function CoreForm({ form, configType, setConfigType }) {
         options={configOptions}
         placeholder="Select Config Type"
         className="w-full mb-6"
+        loading={configTypesLoading}
       />
 
-      <Form
-        form={form}
-        name="dynamic_rule"
-        onValuesChange={() => {}}
-        // labelCol={{ span: 6 }}
-        // wrapperCol={{ span: 14 }}
-        // layout="vertical"
-      >
-        {configType ? (
+      {configType ? (
+        <Form form={form} name="dynamic_rule" onValuesChange={() => {}}>
           <SourceControls data={data} isLoading={isLoading} />
-        ) : null}
-      </Form>
+        </Form>
+      ) : null}
     </div>
   );
 }

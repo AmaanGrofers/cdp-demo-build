@@ -21,8 +21,8 @@ export async function listDatasources(signal) {
   return axiosDataSourceApi.get("/all", { signal });
 }
 
-export async function postDatasources(signal, params) {
-  return axiosDataSourceApi.post("", { signal, params });
+export async function postDatasources(params) {
+  return axiosDataSourceApi.post("", { params });
 }
 
 export async function getDatasourceConfigsTypes(signal) {
