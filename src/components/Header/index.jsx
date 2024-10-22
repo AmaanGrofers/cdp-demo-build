@@ -38,7 +38,7 @@ function Header() {
           <Dropdown menu={{ items }} placement="bottomRight" arrow>
             <a onClick={(e) => e.preventDefault()}>
               <Avatar
-                style={{ backgroundColor: "#87d068" }}
+                style={{ backgroundColor: "#1677FF" }}
                 icon={<UserOutlined />}
               />
               <span className="pl-2 text-sm">{USER}</span>

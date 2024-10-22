@@ -1,10 +1,10 @@
 import { Breadcrumb } from "antd";
-import { segmentRoutes } from "../../constants/appRoutes";
+import { segmentRoutes } from "../../../constants/appRoutes";
 
-function Segments() {
+function CreateSegment() {
   return (
     <div className="p-4">
-      Segments
+      Create Segment
       <div>
         <Breadcrumb
           separator=">"
@@ -13,10 +13,6 @@ function Segments() {
               title: "Create Segment",
               href: `${segmentRoutes.createSegment}`,
             },
-            {
-              title: "Define Segment",
-              href: `${segmentRoutes.defineSegment}`,
-            },
           ]}
         />
       </div>
@@ -24,4 +20,4 @@ function Segments() {
   );
 }
 
-export default Segments;
+export default CreateSegment;

@@ -1,10 +1,10 @@
 import { Breadcrumb } from "antd";
-import { segmentRoutes } from "../../constants/appRoutes";
+import { segmentRoutes } from "../../../constants/appRoutes";
 
-function Segments() {
+function DefineSegment() {
   return (
     <div className="p-4">
-      Segments
+      Define Segment
       <div>
         <Breadcrumb
           separator=">"
@@ -24,4 +24,4 @@ function Segments() {
   );
 }
 
-export default Segments;
+export default DefineSegment;

@@ -27,3 +27,8 @@ export const routeIcons = {
   alerts: AlertOutlined,
   settings: SettingOutlined,
 };
+
+export const segmentRoutes = {
+  createSegment: "/segments/create-segment",
+  defineSegment: "/segments/define-segment",
+};

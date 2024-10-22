@@ -20,6 +20,7 @@ const items = Object.keys(appRoutes).map((routeKey, index) => ({
 function CoreLayout({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
+  console.log("location : ", location?.pathname?.split("/")?.[1]);
 
   const [activeMenuKey, setActiveMenuKey] = useState("");
 
@@ -35,7 +36,7 @@ function CoreLayout({ children }) {
   };
 
   useEffect(() => {
-    const path = location?.pathname;
+    const path = "/" + location?.pathname?.split("/")?.[1];
     const selectedTab = Object.values(appRoutes)?.findIndex(
       (route) => route === path
     );
@@ -43,8 +44,7 @@ function CoreLayout({ children }) {
     if (selectedTab !== null && selectedTab !== undefined) {
       setActiveMenuKey(selectedTab.toString());
     }
-    // as location is an object...
-  }, [JSON.stringify(location)]);
+  }, [location?.pathname]);
 
   return (
     <div>
@@ -52,7 +52,7 @@ function CoreLayout({ children }) {
 
       <Layout hasSider>
         <Sider
-          // added top w.r.t. height of the header...
+          //? added top w.r.t. height of the header...
           className={`${styles.sider} bg-white top-16 pt-2`}
           style={{ "--nav-bar-width": NAV_BAR_WIDTH }}
         >
