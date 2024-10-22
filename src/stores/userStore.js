@@ -3,11 +3,6 @@ import { create } from "zustand";
 const userStore = (set, get) => ({
   currentNav: "",
 
-  getCurrentNav: () => {
-    const currentNav = get().currentNav;
-    return currentNav;
-  },
-
   setCurrentNav: (nav) => {
     set((state) => ({
       ...state,

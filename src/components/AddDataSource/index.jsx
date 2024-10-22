@@ -4,13 +4,17 @@ import { useMutation } from "@tanstack/react-query";
 import CoreForm from "./CoreForm";
 import { useState } from "react";
 import styles from "./styles.module.css";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
+AddDataSource.propTypes = {
+  open: PropTypes.bool,
+  closeModal: PropTypes.func,
+};
+
 function AddDataSource({ open = false, closeModal = () => {} }) {
   const [configType, setConfigType] = useState();
   const [form] = Form.useForm();
 
-  // Mutation for posting the data source
   const { mutateAsync: addDataSource, isLoading } = useMutation({
     mutationFn: postDatasources, // Function that makes the API request
     onSuccess: () => {

@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Header from "../Header";
 import startCase from "lodash.startcase";
 import useUserStore from "../../stores/userStore";
+import PropTypes from "prop-types";
 
 const { Sider } = Layout;
 
@@ -17,13 +18,15 @@ const items = Object.keys(appRoutes).map((routeKey, index) => ({
   label: startCase(routeKey),
 }));
 
-// eslint-disable-next-line react/prop-types
+CoreLayout.propTypes = {
+  children: PropTypes.node,
+};
+
 function CoreLayout({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const currentNav = useUserStore((state) => state.currentNav);
-  const setCurrentNav = useUserStore((state) => state.setCurrentNav);
+  const { currentNav, setCurrentNav } = useUserStore((state) => state);
 
   const handleMenuClick = ({ key }) => {
     // find an optimal way later....

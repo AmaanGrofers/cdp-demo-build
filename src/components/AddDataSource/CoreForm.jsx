@@ -7,8 +7,14 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { Select } from "antd";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
+CoreForm.propTypes = {
+  form: PropTypes.object,
+  configType: PropTypes.string,
+  setConfigType: PropTypes.func,
+};
+
 function CoreForm({ form, configType, setConfigType }) {
   const { data: configTypesData, isLoading: configTypesLoading } = useQuery({
     queryKey: ["datasourceConfigsTypes"],

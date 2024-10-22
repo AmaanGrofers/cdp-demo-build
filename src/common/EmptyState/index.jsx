@@ -1,6 +1,14 @@
-/* eslint-disable react/prop-types */
 import Title from "antd/es/typography/Title";
 import EmptyBox from "./empty-box.png";
+import PropTypes from "prop-types";
+
+EmptyState.propTypes = {
+  height: PropTypes.number,
+  width: PropTypes.number,
+  flexDirection: PropTypes.string,
+  title: PropTypes.string,
+  titleSize: PropTypes.number,
+};
 
 function EmptyState({
   height = 200,

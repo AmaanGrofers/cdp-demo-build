@@ -2,8 +2,13 @@ import { Form, Skeleton } from "antd";
 import getElementController from "../../utils/getElementController";
 import { getDataSourceControls } from "../../configurations/getDataSourceControls";
 import isEmpty from "lodash.isempty";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
+SourceControls.propTypes = {
+  isLoading: PropTypes.bool,
+  data: PropTypes.object,
+};
+
 function SourceControls({ isLoading = false, data = {} }) {
   if (isLoading) {
     return <Skeleton />;
