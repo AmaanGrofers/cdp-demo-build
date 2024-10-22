@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Layout, Menu } from "antd";
 import styles from "./styles.module.css";
 import { appRoutes, routeIcons } from "../../constants/appRoutes";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from "../Header";
 import startCase from "lodash.startcase";
+import useUserStore from "../../stores/userStore";
 
 const { Sider } = Layout;
 
@@ -21,7 +22,8 @@ function CoreLayout({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [activeMenuKey, setActiveMenuKey] = useState("");
+  const currentNav = useUserStore((state) => state.currentNav);
+  const setCurrentNav = useUserStore((state) => state.setCurrentNav);
 
   const handleMenuClick = ({ key }) => {
     // find an optimal way later....
@@ -30,7 +32,7 @@ function CoreLayout({ children }) {
 
     if (route) {
       navigate(route);
-      setActiveMenuKey(key);
+      setCurrentNav(key);
     }
   };
 
@@ -40,10 +42,14 @@ function CoreLayout({ children }) {
       (route) => route === path
     );
 
-    if (selectedTab !== null && selectedTab !== undefined) {
-      setActiveMenuKey(selectedTab.toString());
+    if (
+      selectedTab !== null &&
+      selectedTab !== undefined &&
+      currentNav !== selectedTab.toString()
+    ) {
+      setCurrentNav(selectedTab.toString());
     }
-  }, [location?.pathname]);
+  }, [currentNav, location?.pathname, setCurrentNav]);
 
   return (
     <div className="bg-slate-500">
@@ -57,7 +63,7 @@ function CoreLayout({ children }) {
         >
           <Menu
             mode="inline"
-            selectedKeys={[activeMenuKey]}
+            selectedKeys={[currentNav]}
             onClick={handleMenuClick}
             items={items}
             theme="dark"
