@@ -46,21 +46,21 @@ function CoreLayout({ children }) {
   }, [location?.pathname]);
 
   return (
-    <div>
+    <div className="bg-slate-500">
       <Header />
 
       <Layout hasSider>
         <Sider
           //? added top w.r.t. height of the header...
-          className={`${styles.sider} bg-white top-16 pt-2`}
-          style={{ "--nav-bar-width": NAV_BAR_WIDTH }}
+          className={`${styles.sider} top-16 pt-2 bg-black`}
+          style={{ "--nav-bar-width": NAV_BAR_WIDTH, background: "#001529" }}
         >
           <Menu
             mode="inline"
             selectedKeys={[activeMenuKey]}
             onClick={handleMenuClick}
             items={items}
-            className="bg-white-50"
+            theme="dark"
           />
         </Sider>
         <div

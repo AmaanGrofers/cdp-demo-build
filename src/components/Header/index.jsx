@@ -28,10 +28,7 @@ const items = [
 
 function Header() {
   return (
-    <div
-      className="fixed h-10 p-3 w-full bg-white z-10 shadow-sm"
-      style={{ border: "1px solid #EBECF2" }}
-    >
+    <div className="fixed h-10 p-3 w-full bg-slate-50 z-10 shadow-md">
       <div className="flex justify-between items-center px-4">
         <h3>cdp</h3>
         <div className="pr-4">

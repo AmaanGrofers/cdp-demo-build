@@ -18,6 +18,11 @@
   & li {
     margin-bottom: 0.25rem !important;
   }
+
+  :global(.ant-menu-item-selected) {
+    background-color: white;
+    color: black;
+  }
 }
 
 .layout_content {
