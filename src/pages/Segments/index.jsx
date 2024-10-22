@@ -1,5 +1,5 @@
 function Segments() {
-  return <div>Segments</div>;
+  return <div className="p-4">Segments</div>;
 }
 
 export default Segments;

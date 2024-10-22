@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import styles from "./styles.module.css";
-import { appRoutes } from "../../constants/appRoutes";
-// import Logo from "../Assets/Logo.svg";
+import { appRoutes, routeIcons } from "../../constants/appRoutes";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from "../Header";
+import startCase from "lodash.startcase";
 
 const { Sider } = Layout;
 
@@ -12,8 +12,8 @@ const NAV_BAR_WIDTH = "200px";
 
 const items = Object.keys(appRoutes).map((routeKey, index) => ({
   key: String(index),
-  // icon: React.createElement(icon),
-  label: routeKey.toUpperCase(),
+  icon: React.createElement(routeIcons[routeKey]),
+  label: startCase(routeKey),
 }));
 
 // eslint-disable-next-line react/prop-types
