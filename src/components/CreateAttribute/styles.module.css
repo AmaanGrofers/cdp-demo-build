@@ -3,3 +3,7 @@
     font-size: x-small;
   }
 }
+
+.editorContainer {
+  border: 1px solid #efefef;
+}

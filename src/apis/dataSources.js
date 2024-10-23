@@ -17,6 +17,13 @@ export const axiosDataSourceConfigApi = axios.create({
   },
 });
 
+export const axiosQueryengine = axios.create({
+  baseURL: `${apiUrl}/queryengine`,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
 export async function listDatasources(signal) {
   return axiosDataSourceApi.get("/all", { signal });
 }
@@ -31,4 +38,9 @@ export async function getDatasourceConfigsTypes(signal) {
 
 export async function getDatasourceConfigsRequiredKeys(signal, params) {
   return axiosDataSourceConfigApi.get("/required-keys", { signal, params });
+}
+
+// breaking params for this api...
+export async function postQueryenginePreviewQuery(params) {
+  return axiosQueryengine.post("/preview-query", { ...params });
 }
