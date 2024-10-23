@@ -1,8 +1,9 @@
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import CoreLayout from "./Components/CoreLayout";
 import AdminRoutes from "./Routes/AdminRoutes";
 import { userRoutes } from "./constants/appRoutes";
 import Login from "./pages/Login";
+import PageNotFound from "./pages/404";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
             }
           />
           <Route path={userRoutes.login} element={<Login />} />
+          <Route path="*" element={<Navigate to={userRoutes.pageNotFound} />} />
+          <Route path={userRoutes.pageNotFound} element={<PageNotFound />} />
+
           {/* <Route path="/" element={<Navigate to={appRoutes.login} />} />
           <Route path="*" element={<Navigate to={appRoutes.login} />} /> */}
         </Routes>

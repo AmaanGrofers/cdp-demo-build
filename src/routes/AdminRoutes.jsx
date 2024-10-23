@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { appRoutes, segmentRoutes } from "../constants/appRoutes";
+import { appRoutes, segmentRoutes, userRoutes } from "../constants/appRoutes";
 import Destinations from "../Pages/Destinations";
 import Segments from "../Pages/Segments";
 import DataSources from "../pages/DataSources";
@@ -28,7 +28,8 @@ const AdminRoutes = () => {
       <Route path={segmentRoutes.createSegment} element={<CreateSegment />} />
       <Route path={segmentRoutes.defineSegment} element={<DefineSegment />} />
 
-      <Route path="*" element={<Navigate to={appRoutes.attributes} />} />
+      {/* <Route path="*" element={<Navigate to={appRoutes.attributes} />} /> */}
+      <Route path="*" element={<Navigate to={userRoutes.pageNotFound} />} />
     </Routes>
   );
 };

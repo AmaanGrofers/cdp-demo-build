@@ -35,4 +35,5 @@ export const segmentRoutes = {
 
 export const userRoutes = {
   login: "/login",
+  pageNotFound: "/404",
 };
