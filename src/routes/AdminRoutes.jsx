@@ -10,10 +10,12 @@ import Settings from "../pages/Settings";
 import DefineSegment from "../pages/Segments/DefineSegment";
 import CreateSegment from "../pages/Segments/CreateSegment";
 
+//* main route -> attributes
+
 const AdminRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={appRoutes.dataSources} />} />
+      <Route path="/" element={<Navigate to={appRoutes.attributes} />} />
       <Route path={appRoutes.dataSources} element={<DataSources />} />
       <Route path={appRoutes.segments} element={<Segments />} />
       <Route path={appRoutes.attributes} element={<Attributes />} />
@@ -26,7 +28,7 @@ const AdminRoutes = () => {
       <Route path={segmentRoutes.createSegment} element={<CreateSegment />} />
       <Route path={segmentRoutes.defineSegment} element={<DefineSegment />} />
 
-      <Route path="*" element={<Navigate to={appRoutes.dataSources} />} />
+      <Route path="*" element={<Navigate to={appRoutes.attributes} />} />
     </Routes>
   );
 };

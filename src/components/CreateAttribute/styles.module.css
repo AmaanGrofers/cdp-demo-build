@@ -1,0 +1,5 @@
+.steps {
+  :global(.ant-steps-item-description) {
+    font-size: x-small;
+  }
+}
