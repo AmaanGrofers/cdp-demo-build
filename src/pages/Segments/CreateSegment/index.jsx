@@ -1,6 +1,7 @@
 import { Breadcrumb } from "antd";
 import { segmentRoutes } from "../../../constants/appRoutes";
 import { HomeOutlined } from "@ant-design/icons";
+import SqlBuilder from "../../../common/SqlBuilder";
 
 function CreateSegment() {
   return (
@@ -18,6 +19,10 @@ function CreateSegment() {
           },
         ]}
       />
+
+      <div className="mt-6">
+        <SqlBuilder />
+      </div>
     </div>
   );
 }
